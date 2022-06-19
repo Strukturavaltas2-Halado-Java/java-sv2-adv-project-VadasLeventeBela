@@ -41,16 +41,16 @@ Végpontok:
 
 | HTTP metódus | Végpont                 | Leírás                                                                 |
 | ------------ | ----------------------- | ---------------------------------------------------------------------- |
-| GET          | `"/api/librari/find-all-books"`       | lekérdezi az összes könyvet                              |
-| GET          | `"/api/librari/find-book/{id}"`       | lekérdez id alapján egy könyvet                          |
-| POST         | `"/api/librari/create-new-book"`      | létrehoz egy új könyvet                                  |
+| GET          | `"/api/books/find-all-books"`       | lekérdezi az összes könyvet                                |
+| GET          | `"/api/books/find-book/{id}"`       | lekérdez id alapján egy könyvet                            |
+| POST         | `"/api/books/create-new-book"`      | létrehoz egy új könyvet                                    |
 | PUT          | `"/api/books/update-time-of-return"`  | frisíti a visszatérítés dátumát                          |
-| DELETE       | `"/api/librari/remove-book/{id}"`     | törli a kiválsztott könyvet                              |
-| DELETE       | `"/api/librari/remove-books"`         | törli az összes könyvet                                  |
+| DELETE       | `"/api/books/remove-book/{id}"`     | törli a kiválsztott könyvet                                |
+| DELETE       | `"/api/books/remove-books"`         | törli az összes könyvet                                    |
 
 ---
 
-### Librari
+### Library
 
 * id
 * book_title (nem üres)
@@ -58,12 +58,12 @@ Végpontok:
 
 | HTTP metódus | Végpont                 | Leírás                                                                 |
 | ------------ | ----------------------- | ---------------------------------------------------------------------- |
-| GET          | `"/api/librari/find-all-books"`       | lekérdezi az összes könyvtípust                          |
-| GET          | `"/api/librari/find-book/{id}"`       | lekérdez id alapján egy könyvtípust                      |
-| POST         | `"/api/librari/create-new-book"`      | létrehoz egy új könyvtípust                              |
-| PUT          | `"/api/librari/rent-new-book"`        | új könyvet ad a személyhez                               |
-| PUT          | `"/api/librari/return-book"`          | vissza rakja a könyvet a könyvtárba                      |
-| DELETE       | `"/api/librari/remove-book/{id}"`     | törli a kiválsztott könyvtípust                          |
-| DELETE       | `"/api/librari/remove-books"`         | törli az összes könyvtípust                              |
+| GET          | `"/api/library/find-all-books"`       | lekérdezi az összes könyvtípust                          |
+| GET          | `"/api/library/find-book/{id}"`       | lekérdez id alapján egy könyvtípust                      |
+| POST         | `"/api/library/create-new-book"`      | létrehoz egy új könyvtípust                              |
+| PUT          | `"/api/library/rent-new-book"`        | új könyvet ad a személyhez                               |
+| PUT          | `"/api/library/return-book"`          | vissza rakja a könyvet a könyvtárba                      |
+| DELETE       | `"/api/library/remove-book/{id}"`     | törli a kiválsztott könyvtípust                          |
+| DELETE       | `"/api/library/remove-books"`         | törli az összes könyvtípust                              |
 
 ---
