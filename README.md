@@ -2,7 +2,7 @@
 
 ## Leírás
 
-Ebben a feladatban egy könyvtár könyv-bérlő rendszerét fogom majd elkészíteni a saját elképzelésem alapján. Ezt a feladatot azért válsztottam, mert próbáltam elképzelni egy olyan helyzetet amely valósághű, de jól láthtóak a nögötte rejlő logikai lépések. A program két entitást és négy táblát fog tartalmazni. A két entitás a bérlő és a könyv ami 1-n kapcsolattal rendelkezik (az azonos könyveknél az id mint sorozatszám tesz különbséget) ez két tábla, ezek kapcsoló táblája a harmadik, és a negydik tábla a könyvtár nyilvántartása lessz. A könyvtárból lehet könyveket ki venni amíg van készlet és lehet vissza hozni. A vissza adás határidőre megy és ha ezt túllépi akkor kap egy figyelmeztetést. Addott figyelmeztetés után ideiglenes felfüggesztés jár a könyvbérlésre.
+Ebben a feladatban egy könyvtár könyv-bérlő rendszerét fogom majd elkészíteni a saját elképzelésem alapján. Ezt a feladatot azért válsztottam, mert próbáltam elképzelni egy olyan helyzetet amely valósághű, de jól láthtóak a nögötte rejlő logikai lépések. A program három entitást és négy táblát fog tartalmazni. Két entitás a bérlő és a könyv ami 1-n kapcsolattal rendelkezik (az azonos könyveknél az id mint sorozatszám tesz különbséget) ez két tábla, ezek kapcsoló táblája a harmadik, és a negydik tábla a könyvtár nyilvántartása lessz. A könyvtárból lehet könyveket ki venni amíg van készlet és lehet vissza hozni. A vissza adás határidőre megy és ha ezt túllépi akkor kap egy figyelmeztetést. Addott figyelmeztetés után ideiglenes felfüggesztés jár a könyvbérlésre.
 
 ---
 
