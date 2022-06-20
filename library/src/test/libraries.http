@@ -1,0 +1,25 @@
+DELETE http://localhost:8080/api/library/remove-books
+
+###
+PUT http://localhost:8080/api/library/update-book-type/1
+Content-Type: application/json
+
+{
+  "bookTitle": "Vuk 2",
+  "amount": 12
+}
+
+###
+POST http://localhost:8080/api/library/create-new-book
+Content-Type: application/json
+
+{
+  "bookTitle": "Vuk",
+  "amount": 1
+}
+
+###
+GET http://localhost:8080/api/library/find-all-books
+Accept: application/json
+
+###
