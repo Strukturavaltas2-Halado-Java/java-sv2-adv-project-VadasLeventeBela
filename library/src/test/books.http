@@ -1,0 +1,26 @@
+POST http://localhost:8080/api/books/create-new-book
+Content-Type: application/json
+
+{
+  "title": "Vuk",
+  "description": "It's a story about ..."
+}
+
+###
+PUT http://localhost:8080/api/books/update-book/1
+Content-Type: application/json
+
+{
+  "title": "Vuk 2",
+  "description": "It's a story about ..."
+}
+
+###
+GET http://localhost:8080/api/books/find-all-books
+Accept: application/json
+
+###
+DELETE http://localhost:8080/api/books/remove-books
+Accept: application/json
+
+###
