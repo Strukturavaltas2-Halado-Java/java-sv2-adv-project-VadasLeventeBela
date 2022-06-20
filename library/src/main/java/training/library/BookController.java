@@ -28,7 +28,7 @@ public class BookController {
 
     @PostMapping("/create-new-book")
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDto createBook(@Valid CreateBookCommand command){
+    public BookDto createBook(@Valid @RequestBody CreateBookCommand command){
         return service.createBook(command);
     }
 
@@ -38,7 +38,7 @@ public class BookController {
     }
 
     @PutMapping("/update-book/{id}")
-    public BookDto updateBook(@PathVariable long id,@Valid UpdateBookCommand command){
+    public BookDto updateBook(@PathVariable long id,@Valid @RequestBody UpdateBookCommand command){
         return service.updateBook(id,command);
     }
 

@@ -26,7 +26,7 @@ public class LibraryController {
 
     @PostMapping("/create-new-book")
     @ResponseStatus(HttpStatus.CREATED)
-    public LibraryDto createNewBook(@Valid CreateBookTypeCommand command){
+    public LibraryDto createNewBook(@Valid @RequestBody CreateBookTypeCommand command){
         return service.createNewBook(command);
     }
 
@@ -41,7 +41,7 @@ public class LibraryController {
     }
 
     @PutMapping("/update-book-type/{id}")
-    public LibraryDto updateBookType(@PathVariable long id, @Valid UpdateLibraryCommand command){
+    public LibraryDto updateBookType(@PathVariable long id, @Valid @RequestBody UpdateLibraryCommand command){
         return service.updateBookType(id,command);
     }
 

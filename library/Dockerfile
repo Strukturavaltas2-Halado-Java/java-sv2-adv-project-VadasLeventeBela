@@ -1,0 +1,7 @@
+FROM mariadb:latest AS libraries-mariadb
+ENV MYSQL_DATABASE libraries
+ENV MYSQL_USER libraries
+ENV MYSQL_PASSWORD libraries
+ENV MYSQL_ROOT_PASSWORD libraries
+ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
+EXPOSE 3306

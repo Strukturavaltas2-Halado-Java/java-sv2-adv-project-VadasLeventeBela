@@ -29,7 +29,7 @@ public class PersonController {
 
     @PostMapping("/create-new-person")
     @ResponseStatus(HttpStatus.CREATED)
-    public PersonDto createPerson(@Valid CreatePersonCommand person){
+    public PersonDto createPerson(@Valid @RequestBody CreatePersonCommand person){
         return personService.createPerson(person);
     }
 
@@ -39,7 +39,7 @@ public class PersonController {
     }
 
     @PutMapping("/update-person/{id}")
-    public PersonDto updatePerson(@PathVariable long id,@Valid UpdatePersonCommand command){
+    public PersonDto updatePerson(@PathVariable long id,@Valid @RequestBody UpdatePersonCommand command){
         return personService.updatePerson(id,command);
     }
 
