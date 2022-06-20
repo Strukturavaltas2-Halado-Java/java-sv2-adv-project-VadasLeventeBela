@@ -31,7 +31,7 @@ public class Person {
     private LocalDate dateOfBirth;
 
     @NotNull
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "currentHolder")
     private List<Book> books = new ArrayList<>();
 
     @NotNull

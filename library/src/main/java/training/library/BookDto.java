@@ -15,7 +15,6 @@ public class BookDto {
     private String title;
     @NotBlank
     private String description;
-    private Person currentHolder;
     private LocalDateTime timeOfReturn;
     private boolean checked;
 

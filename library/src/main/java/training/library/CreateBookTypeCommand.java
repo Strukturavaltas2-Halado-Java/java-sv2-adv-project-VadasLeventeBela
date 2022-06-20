@@ -19,7 +19,7 @@ public class CreateBookTypeCommand {
     @NotBlank
     private String bookTitle;
 
-    @Schema(description = "the amount of books on hand",example = "12")
+    @Schema(description = "the amount of books on hand",example = "1")
     @NotNull
     @Min(0)
     private int amount;

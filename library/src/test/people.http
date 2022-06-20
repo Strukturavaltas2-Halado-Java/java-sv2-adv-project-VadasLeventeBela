@@ -1,0 +1,26 @@
+PUT http://localhost:8080/api/people/update-person/1
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "dateOfBirth": "2000-01-01"
+}
+
+###
+POST http://localhost:8080/api/people/create-new-person
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "dateOfBirth": "2000-01-01"
+}
+
+###
+GET http://localhost:8080/api/people/find-all-people
+Accept: application/json
+
+###
+DELETE http://localhost:8080/api/people/remove-people
+Accept: application/json
+
+###

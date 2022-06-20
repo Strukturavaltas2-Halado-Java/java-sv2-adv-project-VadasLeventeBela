@@ -25,7 +25,7 @@ public class Book {
     private String description;
 
     @ManyToOne
-    private Person person;
+    private Person currentHolder;
 
     private LocalDateTime timeOfReturn;
 

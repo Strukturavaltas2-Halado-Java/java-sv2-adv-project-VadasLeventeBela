@@ -24,10 +24,6 @@ public class PersonDto {
     private LocalDate dateOfBirth;
 
     @NotNull
-    @OneToMany(mappedBy = "person")
-    private List<Book> books = new ArrayList<>();
-
-    @NotNull
     @Min(0)
     private int warnings;
 

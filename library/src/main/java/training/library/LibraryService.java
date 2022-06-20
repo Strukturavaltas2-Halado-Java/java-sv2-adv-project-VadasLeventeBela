@@ -42,9 +42,9 @@ public class LibraryService {
         Book book = bookRepository.findById(bid).orElseThrow(()->new BookNotFoundException(bid));
         Library library = repository.findAll().stream().filter(l->l.getBookTitle().equals(book.getTitle())).findFirst().orElseThrow(BookTypeNotFoundException::new);
         if(validateRent(person,book,library)) {
-            person.addBook(book);
-            book.setPerson(person);
+            book.setCurrentHolder(person);
             book.setTimeOfReturn(LocalDateTime.now().plusDays(30));
+            person.addBook(book);
             library.setAmount(library.getAmount() - 1);
         }
         return modelMapper.map(library,LibraryDto.class);
@@ -56,7 +56,7 @@ public class LibraryService {
         Book book = bookRepository.findById(bid).orElseThrow(()->new BookNotFoundException(bid));
         Library library = repository.findAll().stream().filter(l->l.getBookTitle().equals(book.getTitle())).findFirst().orElseThrow(BookTypeNotFoundException::new);
         validatePerson(person);
-        book.setPerson(null);
+        book.setCurrentHolder(null);
         book.setTimeOfReturn(null);
         book.setChecked(false);
         person.getBooks().remove(person.getBooks().stream().filter(b->b.getId()==bid).findFirst().orElseThrow(()->new IllegalArgumentException("Can't find book on person!")));
@@ -82,7 +82,7 @@ public class LibraryService {
 
     private boolean validateRent(Person person,Book book,Library library){
         validatePerson(person);
-        return library.getAmount() != 0 && book.getPerson() == null && !person.getSuspensionDate().isAfter(LocalDateTime.now());
+        return library.getAmount() != 0 && book.getCurrentHolder() == null && person.getSuspensionDate()==null||!person.getSuspensionDate().isAfter(LocalDateTime.now());
     }
 
     private void validatePerson(Person person){
