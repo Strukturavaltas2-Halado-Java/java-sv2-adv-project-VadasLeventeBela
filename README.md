@@ -38,6 +38,7 @@ Végpontok:
 * description (nem üres)
 * current_holder (person)
 * time_of_return (dátum)
+* checked
 
 | HTTP metódus | Végpont                 | Leírás                                                                 |
 | ------------ | ----------------------- | ---------------------------------------------------------------------- |
