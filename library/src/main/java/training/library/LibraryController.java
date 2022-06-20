@@ -1,6 +1,5 @@
 package training.library;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,31 +9,35 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/library")
 @AllArgsConstructor
-@RequestMapping("/api/books")
-@Tag(name = "Operations on Book")
-public class BookController {
-    private BookService service;
+public class LibraryController {
+    private LibraryService service;
 
     @GetMapping("/find-all-books")
-    public List<BookDto> findAllBooks(@RequestParam Optional<String> title){
+    public List<LibraryDto> findAllBooks(@RequestParam Optional<String> title){
         return service.findAllBooks(title);
     }
 
     @GetMapping("/find-book/{id}")
-    public BookDto findBookById(@PathVariable long id){
+    public LibraryDto findBookById(@PathVariable long id){
         return service.findBookById(id);
     }
 
     @PostMapping("/create-new-book")
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDto createBook(@Valid CreateBookCommand command){
-        return service.createBook(command);
+    public LibraryDto createNewBook(@Valid CreateBookTypeCommand command){
+        return service.createNewBook(command);
     }
 
-    @PutMapping("/update-time-of-return/{id}")
-    public BookDto updateTimeOfReturn(@PathVariable long id){
-        return service.updateTimeOfReturn(id);
+    @PutMapping("/rent-new-book")
+    public LibraryDto rentBook(@RequestParam long pid,@RequestParam long bid){
+        return service.rentBook(pid,bid);
+    }
+
+    @PutMapping("/return-book")
+    public LibraryDto returnBook(@RequestParam long pid,@RequestParam long bid){
+        return service.returnBook(pid,bid);
     }
 
     @DeleteMapping("/remove-book/{id}")
@@ -48,5 +51,6 @@ public class BookController {
     public void removeBooks(){
         service.removeBooks();
     }
+
 
 }

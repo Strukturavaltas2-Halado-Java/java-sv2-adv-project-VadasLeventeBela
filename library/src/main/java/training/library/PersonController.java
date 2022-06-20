@@ -18,7 +18,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/find-all-people")
-    public List<PersonDto> findPeople(Optional<String> name,Optional<String> date){
+    public List<PersonDto> findPeople(@RequestParam Optional<String> name,@RequestParam Optional<String> date){
         return personService.findPeople(name,date);
     }
 

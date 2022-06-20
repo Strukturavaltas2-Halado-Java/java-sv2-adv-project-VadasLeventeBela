@@ -28,6 +28,8 @@ public class Book {
 
     private LocalDateTime timeOfReturn;
 
+    private boolean checked;
+
     public Book(String title, String description) {
         this.title = title;
         this.description = description;

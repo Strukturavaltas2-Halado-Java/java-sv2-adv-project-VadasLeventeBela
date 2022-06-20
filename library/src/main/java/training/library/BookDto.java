@@ -17,6 +17,7 @@ public class BookDto {
     private String description;
     private Person currentHolder;
     private LocalDateTime timeOfReturn;
+    private boolean checked;
 
     public BookDto(String title, String description) {
         this.title = title;

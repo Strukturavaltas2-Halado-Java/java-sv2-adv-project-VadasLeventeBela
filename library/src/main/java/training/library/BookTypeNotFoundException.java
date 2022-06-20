@@ -12,4 +12,11 @@ public class BookTypeNotFoundException extends AbstractThrowableProblem {
                 Status.NOT_FOUND,
                 String.format("Book type with id %d not found!",id));
     }
+
+    public BookTypeNotFoundException() {
+        super(URI.create("api/library/book-type-not-found"),
+                "Not Found",
+                Status.NOT_FOUND,
+                "Book type not found!");
+    }
 }
