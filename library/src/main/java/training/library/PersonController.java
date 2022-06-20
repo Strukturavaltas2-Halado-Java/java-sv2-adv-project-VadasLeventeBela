@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,12 +29,12 @@ public class PersonController {
 
     @PostMapping("/create-new-person")
     @ResponseStatus(HttpStatus.CREATED)
-    public PersonDto createPerson(CreatePersonCommand person){
+    public PersonDto createPerson(@Valid CreatePersonCommand person){
         return personService.createPerson(person);
     }
 
-    @PutMapping("/update-warnings")
-    public PersonDto updateWarnings(long id){
+    @PutMapping("/update-warnings/{id}")
+    public PersonDto updateWarnings(@PathVariable long id){
         return personService.updateWarnings(id);
     }
 
