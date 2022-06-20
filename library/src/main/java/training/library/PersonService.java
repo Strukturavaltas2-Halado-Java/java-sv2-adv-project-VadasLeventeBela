@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.List;
@@ -33,13 +34,14 @@ public class PersonService {
         return modelMapper.map(repository.save(new Person(person.getName(),person.getDateOfBirth())),PersonDto.class);
     }
 
-
+    @Transactional
     public PersonDto updateWarnings(long id) {
         Person person = repository.findById(id).orElseThrow(()->new PersonNotFoundException(id));
         person.setWarnings(person.getWarnings()+1);
         return modelMapper.map(person,PersonDto.class);
     }
 
+    @Transactional
     public PersonDto updatePerson(long id, UpdatePersonCommand command) {
         Person person = repository.findById(id).orElseThrow(()->new PersonNotFoundException(id));
         person.setName(command.getName());

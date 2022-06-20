@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -21,7 +22,7 @@ public class Library {
     @NotBlank
     private String bookTitle;
 
-    @NotBlank
+    @NotNull
     @Min(0)
     private int amount;
 

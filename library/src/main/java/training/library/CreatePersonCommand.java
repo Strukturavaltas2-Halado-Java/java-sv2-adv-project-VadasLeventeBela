@@ -26,9 +26,4 @@ public class CreatePersonCommand {
     @Schema(description = "date of birth",example = "2000-01-01")
     @NotNull
     private LocalDate dateOfBirth;
-
-    @Schema(description = "books in person's possession")
-    @NotNull
-    @OneToMany(mappedBy = "person")
-    private List<Book> books = new ArrayList<>();
 }

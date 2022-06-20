@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,6 +36,7 @@ public class LibraryService {
         return modelMapper.map(repository.save(new Library(command.getBookTitle(),command.getAmount())),LibraryDto.class);
     }
 
+    @Transactional
     public LibraryDto rentBook(long pid, long bid) {
         Person person = personRepository.findById(pid).orElseThrow(()->new PersonNotFoundException(pid));
         Book book = bookRepository.findById(bid).orElseThrow(()->new BookNotFoundException(bid));
@@ -48,6 +50,7 @@ public class LibraryService {
         return modelMapper.map(library,LibraryDto.class);
     }
 
+    @Transactional
     public LibraryDto returnBook(long pid, long bid) {
         Person person = personRepository.findById(pid).orElseThrow(()->new PersonNotFoundException(pid));
         Book book = bookRepository.findById(bid).orElseThrow(()->new BookNotFoundException(bid));
@@ -61,7 +64,7 @@ public class LibraryService {
         return modelMapper.map(library,LibraryDto.class);
     }
 
-
+    @Transactional
     public LibraryDto updateBookType(long id, UpdateLibraryCommand command) {
         Library library = repository.findById(id).orElseThrow(()->new BookTypeNotFoundException(id));
         library.setBookTitle(command.getBookTitle());
