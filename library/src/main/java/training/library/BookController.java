@@ -37,6 +37,11 @@ public class BookController {
         return service.updateTimeOfReturn(id);
     }
 
+    @PutMapping("/update-book/{id}")
+    public BookDto updateBook(@PathVariable long id,@Valid UpdateBookCommand command){
+        return service.updateBook(id,command);
+    }
+
     @DeleteMapping("/remove-book/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeBookById(@PathVariable long id){

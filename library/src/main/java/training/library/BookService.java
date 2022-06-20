@@ -38,6 +38,13 @@ public class BookService {
         return modelMapper.map(book,BookDto.class);
     }
 
+    public BookDto updateBook(long id, UpdateBookCommand command) {
+        Book book = repository.findById(id).orElseThrow(()->new BookNotFoundException(id));
+        book.setTitle(command.getTitle());
+        book.setDescription(command.getDescription());
+        return modelMapper.map(book,BookDto.class);
+    }
+
     public void removeBookById(long id) {
         repository.deleteById(id);
     }

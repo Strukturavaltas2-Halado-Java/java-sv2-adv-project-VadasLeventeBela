@@ -40,6 +40,13 @@ public class PersonService {
         return modelMapper.map(person,PersonDto.class);
     }
 
+    public PersonDto updatePerson(long id, UpdatePersonCommand command) {
+        Person person = repository.findById(id).orElseThrow(()->new PersonNotFoundException(id));
+        person.setName(command.getName());
+        person.setDateOfBirth(command.getDateOfBirth());
+        return modelMapper.map(person,PersonDto.class);
+    }
+
     public void deletePerson(long id) {
         repository.deleteById(id);
     }

@@ -26,6 +26,7 @@ Végpontok:
 | GET          | `"/api/people/find-person/{id}"`      | lekérdez id alapján egy személyt                         |
 | POST         | `"/api/people/create-new-person"`     | létrehoz egy új személyt                                 |
 | PUT          | `"/api/people/update-warnings"`       | frissíti a figyelmeztetéseket                            |
+| PUT          | `"/api/people/update-person/{id}"`    | frissíti a személyt                                      |
 | DELETE       | `"/api/people/remove-person/{id}"`    | törli a kiválsztott személyt                             |
 | DELETE       | `"/api/people/remove-people"`         | törli az összes személyt                                 |
 
@@ -42,12 +43,13 @@ Végpontok:
 
 | HTTP metódus | Végpont                 | Leírás                                                                 |
 | ------------ | ----------------------- | ---------------------------------------------------------------------- |
-| GET          | `"/api/books/find-all-books"`       | lekérdezi az összes könyvet                                |
-| GET          | `"/api/books/find-book/{id}"`       | lekérdez id alapján egy könyvet                            |
-| POST         | `"/api/books/create-new-book"`      | létrehoz egy új könyvet                                    |
-| PUT          | `"/api/books/update-time-of-return"`  | frisíti a visszatérítés dátumát                          |
-| DELETE       | `"/api/books/remove-book/{id}"`     | törli a kiválsztott könyvet                                |
-| DELETE       | `"/api/books/remove-books"`         | törli az összes könyvet                                    |
+| GET          | `"/api/books/find-all-books"`         | lekérdezi az összes könyvet                              |
+| GET          | `"/api/books/find-book/{id}"`         | lekérdez id alapján egy könyvet                          |
+| POST         | `"/api/books/create-new-book"`        | létrehoz egy új könyvet                                  |
+| PUT          | `"/api/books/update-time-of-return"`  | frissíti a visszatérítés dátumát                         |
+| PUT          | `"/api/books/update-book/{id}"`       | frissíti a könyvet                                       |
+| DELETE       | `"/api/books/remove-book/{id}"`       | törli a kiválsztott könyvet                              |
+| DELETE       | `"/api/books/remove-books"`           | törli az összes könyvet                                  |
 
 ---
 
@@ -64,6 +66,7 @@ Végpontok:
 | POST         | `"/api/library/create-new-book"`      | létrehoz egy új könyvtípust                              |
 | PUT          | `"/api/library/rent-new-book"`        | új könyvet ad a személyhez                               |
 | PUT          | `"/api/library/return-book"`          | vissza rakja a könyvet a könyvtárba                      |
+| PUT          | `"/api/library/update-book-type/{id}"`| frissíti a könyv bejegyzést                              |
 | DELETE       | `"/api/library/remove-book/{id}"`     | törli a kiválsztott könyvtípust                          |
 | DELETE       | `"/api/library/remove-books"`         | törli az összes könyvtípust                              |
 

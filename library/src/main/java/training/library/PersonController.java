@@ -38,6 +38,11 @@ public class PersonController {
         return personService.updateWarnings(id);
     }
 
+    @PutMapping("/update-person/{id}")
+    public PersonDto updatePerson(@PathVariable long id,@Valid UpdatePersonCommand command){
+        return personService.updatePerson(id,command);
+    }
+
     @DeleteMapping("/remove-person/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePerson(@PathVariable long id){

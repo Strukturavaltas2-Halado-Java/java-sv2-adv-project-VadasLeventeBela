@@ -40,6 +40,11 @@ public class LibraryController {
         return service.returnBook(pid,bid);
     }
 
+    @PutMapping("/update-book-type/{id}")
+    public LibraryDto updateBookType(@PathVariable long id, @Valid UpdateLibraryCommand command){
+        return service.updateBookType(id,command);
+    }
+
     @DeleteMapping("/remove-book/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeBookById(@PathVariable long id){

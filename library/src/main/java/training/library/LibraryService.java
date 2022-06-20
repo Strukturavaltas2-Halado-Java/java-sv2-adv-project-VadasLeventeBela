@@ -61,6 +61,14 @@ public class LibraryService {
         return modelMapper.map(library,LibraryDto.class);
     }
 
+
+    public LibraryDto updateBookType(long id, UpdateLibraryCommand command) {
+        Library library = repository.findById(id).orElseThrow(()->new BookTypeNotFoundException(id));
+        library.setBookTitle(command.getBookTitle());
+        library.setAmount(command.getAmount());
+        return modelMapper.map(library,LibraryDto.class);
+    }
+
     public void removeBookById(long id) {
         repository.deleteById(id);
     }
