@@ -24,3 +24,7 @@ DELETE http://localhost:8080/api/books/remove-books
 Accept: application/json
 
 ###
+PUT http://localhost:8080/api/books/update-time-of-return/1
+Content-Type: application/json
+
+###

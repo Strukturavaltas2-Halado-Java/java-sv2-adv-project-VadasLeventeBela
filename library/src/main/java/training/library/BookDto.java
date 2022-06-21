@@ -11,10 +11,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookDto {
+    private long id;
     @NotBlank
     private String title;
     @NotBlank
     private String description;
+    private Person currentHolder;
     private LocalDateTime timeOfReturn;
     private boolean checked;
 

@@ -17,11 +17,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PersonDto {
+    private long id;
     @NotBlank
     private String name;
 
     @NotNull
     private LocalDate dateOfBirth;
+
+    private List<Book> books = new ArrayList<>();
 
     @NotNull
     @Min(0)

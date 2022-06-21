@@ -24,3 +24,7 @@ DELETE http://localhost:8080/api/people/remove-people
 Accept: application/json
 
 ###
+PUT http://localhost:8080/api/people/update-warnings/1
+Content-Type: application/json
+
+###

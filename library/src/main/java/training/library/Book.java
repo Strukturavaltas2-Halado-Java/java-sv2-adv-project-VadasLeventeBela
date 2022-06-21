@@ -24,7 +24,7 @@ public class Book {
     @NotBlank
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Person currentHolder;
 
     private LocalDateTime timeOfReturn;
