@@ -8,8 +8,10 @@ import training.library.services.BookService;
 import training.library.commands.CreateBookCommand;
 import training.library.commands.UpdateBookCommand;
 import training.library.dtos.BookDto;
+import training.library.services.LibraryService;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +39,8 @@ public class BookController {
     }
 
     @PutMapping("/update-time-of-return/{id}")
-    public BookDto updateTimeOfReturn(@PathVariable long id){
-        return service.updateTimeOfReturn(id);
+    public BookDto updateTimeOfReturn(@PathVariable long id, @RequestParam String dateTime){
+        return service.updateTimeOfReturn(id,dateTime);
     }
 
     @PutMapping("/update-book/{id}")
