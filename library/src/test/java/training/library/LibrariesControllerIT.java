@@ -1,13 +1,20 @@
 package training.library;
 
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.modelmapper.TypeToken;
+import org.mariadb.jdbc.MariaDbDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import training.library.commands.*;
+import training.library.dtos.BookDto;
+import training.library.dtos.LibraryDto;
+import training.library.dtos.PersonDto;
+import training.library.entities.Book;
+import training.library.entities.Person;
 
-import java.lang.reflect.Type;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,8 +30,20 @@ public class LibrariesControllerIT {
     BookDto bookDto;
     LibraryDto libraryDto;
 
+    Flyway flyway;
+
     @BeforeEach
     void init(){
+        try {
+        MariaDbDataSource dataSource = new MariaDbDataSource("jdbc:mariadb://localhost:3333/libraries");
+        dataSource.setUser("libraries");
+        dataSource.setPassword("libraries");
+        flyway = Flyway.configure().dataSource(dataSource).load();
+        }catch (SQLException e){
+            throw new IllegalStateException("Can not find data source!");
+        }
+        flyway.clean();
+        flyway.migrate();
         personDto = webTestClient.post()
                 .uri("/api/people/create-new-person")
                 .bodyValue(new CreatePersonCommand("John Doe", LocalDate.of(2000,01,01)))

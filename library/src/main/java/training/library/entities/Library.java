@@ -1,4 +1,4 @@
-package training.library;
+package training.library.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

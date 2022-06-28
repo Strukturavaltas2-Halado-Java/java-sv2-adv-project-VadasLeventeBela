@@ -1,4 +1,4 @@
-package training.library;
+package training.library.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

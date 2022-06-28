@@ -1,9 +1,13 @@
-package training.library;
+package training.library.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import training.library.services.LibraryService;
+import training.library.commands.UpdateLibraryCommand;
+import training.library.commands.CreateBookTypeCommand;
+import training.library.dtos.LibraryDto;
 
 import javax.validation.Valid;
 import java.util.List;

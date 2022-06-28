@@ -1,9 +1,13 @@
-package training.library;
+package training.library.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import training.library.services.PersonService;
+import training.library.commands.UpdatePersonCommand;
+import training.library.commands.CreatePersonCommand;
+import training.library.dtos.PersonDto;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -18,7 +22,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/find-all-people")
-    public List<PersonDto> findPeople(@RequestParam Optional<String> name,@RequestParam Optional<String> date){
+    public List<PersonDto> findPeople(@RequestParam Optional<String> name, @RequestParam Optional<String> date){
         return personService.findPeople(name,date);
     }
 

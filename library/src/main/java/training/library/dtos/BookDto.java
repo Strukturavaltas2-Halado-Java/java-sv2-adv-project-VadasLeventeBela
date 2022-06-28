@@ -1,37 +1,27 @@
-package training.library;
+package training.library.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import training.library.entities.Person;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "books")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BookDto {
     private long id;
-
     @NotBlank
     private String title;
-
     @NotBlank
     private String description;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     private Person currentHolder;
-
     private LocalDateTime timeOfReturn;
-
     private boolean checked;
 
-    public Book(String title, String description) {
+    public BookDto(String title, String description) {
         this.title = title;
         this.description = description;
     }
