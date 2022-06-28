@@ -126,7 +126,7 @@ public class LibrariesControllerIT {
         List<LibraryDto> libraryDtos = webTestClient.get()
                 .uri("/api/library/find-all-books")
                 .exchange().expectBodyList(LibraryDto.class).returnResult().getResponseBody();
-        assertThat(libraryDtos).hasSize(1).extracting(LibraryDto::getTitle).isEqualTo(List.of("Vuk"));
+        assertThat(libraryDtos).hasSize(2).extracting(LibraryDto::getTitle).isEqualTo(List.of("Vuk","Vuk"));
     }
 
     @Test
@@ -159,7 +159,7 @@ public class LibrariesControllerIT {
         List<LibraryDto> libraryDtos = webTestClient.get()
                 .uri("/api/library/find-all-books")
                 .exchange().expectBodyList(LibraryDto.class).returnResult().getResponseBody();
-        assertThat(libraryDtos).isEmpty();
+        assertThat(libraryDtos).hasSize(1);
     }
 
     @Test
@@ -228,7 +228,7 @@ public class LibrariesControllerIT {
         List<LibraryDto> libraryDtos = webTestClient.get()
                 .uri("/api/library/find-all-books")
                 .exchange().expectBodyList(LibraryDto.class).returnResult().getResponseBody();
-        assertThat(libraryDtos).hasSize(1).extracting(LibraryDto::getTitle).isEqualTo(List.of("Vuk 2"));
+        assertThat(libraryDtos).hasSize(2).extracting(LibraryDto::getTitle).isEqualTo(List.of("Vuk","Vuk 2"));
     }
 
     @Test
@@ -245,8 +245,7 @@ public class LibrariesControllerIT {
     @Test
     void testUpdateReturnDate(){
         webTestClient.put()
-                .uri(uriBuilder -> uriBuilder.path("/api/books/update-time-of-return/{id}").build(bookDto.getId()))
-                .bodyValue(new UpdateBookCommand("Vuk 2","desc"))
+                .uri(uriBuilder -> uriBuilder.path("/api/books/update-time-of-return/{id}").queryParam("dateTime","2000-01-01T12:00:00").build(bookDto.getId()))
                 .exchange();
         List<BookDto> bookDtos = webTestClient.get()
                 .uri("/api/books/find-all-books")
