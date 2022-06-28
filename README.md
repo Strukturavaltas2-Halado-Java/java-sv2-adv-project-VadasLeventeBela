@@ -71,3 +71,8 @@ Végpontok:
 | DELETE       | `"/api/library/remove-books"`         | törli az összes könyvtípust                              |
 
 ---
+
+## Technológiai részletek
+
+Háromrétegű alkalmazás, mely egy docker container-ben futó MariaDb adatbázissal rendelkezik.
+A táblákat a flyway készíti, és Swagger UI-on kilehet próbálni az eggyes végpontokat.
