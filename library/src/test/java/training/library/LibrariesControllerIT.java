@@ -254,32 +254,26 @@ public class LibrariesControllerIT {
     }
 
     @Test
-    void testRentAndReturnBook(){
-        webTestClient.put()
-                .uri(uriBuilder -> uriBuilder.path("/api/library/rent-new-book").queryParam("pid",personDto.getId()).queryParam("bid",bookDto.getId()).build())
-                .exchange();
-        PersonDto personDto1 = webTestClient.get()
-                .uri(uriBuilder -> uriBuilder.path("/api/people/find-person/{id}").build(personDto.getId()))
+    void testPersonNotFound(){
+        webTestClient.get()
+                .uri(uriBuilder -> uriBuilder.path("/api/people/find-person/{id}").build(11))
                 .exchange()
-                .expectBody(PersonDto.class).returnResult().getResponseBody();
-        BookDto bookDto1 = webTestClient.get()
-                .uri(uriBuilder -> uriBuilder.path("/api/books/find-book/{id}").build(bookDto.getId()))
+                .expectStatus().isNotFound();
+    }
+
+    @Test
+    void testBookNotFound(){
+        webTestClient.get()
+                .uri(uriBuilder -> uriBuilder.path("/api/books/find-book/{id}").build(11))
                 .exchange()
-                .expectBody(BookDto.class).returnResult().getResponseBody();
-        assertThat(personDto1.getBooks().get(0)).extracting(Book::getTitle).isEqualTo("Vuk");
-        assertThat(bookDto1.getCurrentHolder()).extracting(Person::getName).isEqualTo("John Doe");
-        webTestClient.put()
-                .uri(uriBuilder -> uriBuilder.path("/api/library/return-book").queryParam("pid",personDto.getId()).queryParam("bid",bookDto.getId()).build())
-                .exchange();
-        personDto1 = webTestClient.get()
-                .uri(uriBuilder -> uriBuilder.path("/api/people/find-person/{id}").build(personDto.getId()))
+                .expectStatus().isNotFound();
+    }
+
+    @Test
+    void testLibraryNotFound(){
+        webTestClient.get()
+                .uri(uriBuilder -> uriBuilder.path("/api/library/find-book/{id}").build(11))
                 .exchange()
-                .expectBody(PersonDto.class).returnResult().getResponseBody();
-        bookDto1 = webTestClient.get()
-                .uri(uriBuilder -> uriBuilder.path("/api/books/find-book/{id}").build(bookDto.getId()))
-                .exchange()
-                .expectBody(BookDto.class).returnResult().getResponseBody();
-        assertThat(personDto1).extracting(PersonDto::getBooks).isEqualTo(List.of());
-        assertThat(bookDto1).extracting(BookDto::getCurrentHolder).isNull();
+                .expectStatus().isNotFound();
     }
 }
